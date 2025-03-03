@@ -4,6 +4,6 @@ This code is made up of HTML, CSS and Javascript which allow user to input value
 
 ## Page URL 
 
-This code had been published with Github Page. \n
+This code had been published with Github Page. 
 
 Click here to visit the page. 
