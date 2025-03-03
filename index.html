@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Element Picker</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body{
+            display:flex; 
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+            background-color: cadetblue;
+        }
+        .main{
+            max-width: 500px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.1);
+        }
+        .header{
+            height: 100px;
+            background-color: darkcyan;
+            border-radius: 20px 20px 0 0;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .content{
+            padding: 25px 35px;
+            display:flex;
+            flex-direction: column;
+        }
+        .inputElements {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .inputElements textarea{
+            margin: 10px 0 20px 0;
+            padding: 5px;
+            height:200px;
+        }
+        .inputElements button{
+            height:30px;
+            color: #fff;
+            font-weight: 500;
+            padding: 0px 10px 0px 10px;
+            background-color: darkcyan;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .inputElements button:hover{
+            background-color: black;
+        }
+
+        #pickArea{
+            margin:20px 0 20px 0;
+            width:100%;
+            height: 50px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h2>Random Element Picker</h2>
+        </div>
+        <div class="content">
+            <div class="inputElements">
+                <h3>Enter Elements: </h3>
+                <sub> [Each line is considered as an element] </sub>
+                <textarea class="inputElements" id="userElements"></textarea>
+                <button onclick = "pickElement()" id = "start">Start Pick</button>
+            </div>
+            <div id="pickArea">
+                <p id = "shPickElement">Picked Element Shown Here</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function pickElement(){
+            var userInput = document.getElementById("userElements").value; 
+            userInput.trim();
+            var elementsAr = userInput.split("\n"); 
+            for (let i = 0; i < elementsAr.length; i++){
+                if (elementsAr[i] == ""){
+                    elementsAr.splice(i,1);
+                    i--;
+                }
+            }
+            const randNum = Math.floor(Math.random()*elementsAr.length);
+            var displayArea = document.getElementById("shPickElement");
+            displayArea.innerHTML = elementsAr[randNum];
+        };
+    </script>
+</body>
+</html>
